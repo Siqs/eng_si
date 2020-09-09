@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/Siqs/eng_si.svg?branch=master)](https://travis-ci.org/Siqs/eng_si)
 //TODO badge coveralls
-//TODO badge codeclimate
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
 ## Integrantes
 
