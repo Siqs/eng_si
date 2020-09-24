@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Clinica.create!([
+    { "name": "Clinica A", "address": "Rua Teste, 1"},
+    { "name": "Clinica B", "address": "Rua Teste, 2"}
+])
