@@ -1,0 +1,9 @@
+<h1>Encontre ajuda perto de você!</h1>
+
+<% @clinicas.each do |c| %>
+    <tr>
+        <td><%= c.name %></td>
+        <td><%= c.address %></td>
+    </tr>
+<% end %>
+        
