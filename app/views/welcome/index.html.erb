@@ -1,14 +1,24 @@
-<h1>Encontre ajuda perto de você!</h1>
 
-<% @clinicas.each do |c| %>
-    <tr>
-        <td><%= c.name %></td>
-        <td><%= c.address %></td>
-    </tr>
-    <br>
-<% end %>
+<div class="container">
 
-<p>
-<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C51.501564,-0.141944&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
-</p>
-        
+    <div class="top"> 
+    <img src="public/saude-mental(1).png">
+    <%#= image_tag("public/saude-mental(1).png") %>   
+    <button>LOGIN</button>
+    </div>
+
+    <h1>Encontre ajuda perto de você!</h1>
+
+    <table>
+    <% @clinicas.each do |c| %>
+        <tr class="container">
+            <td class="name"><%= c.name %></td>
+            <td class="address"><%= c.address %></td>
+        </tr>
+        <br>
+    <% end %>
+    </table>
+    <p class="mapa"><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C51.501564,-0.141944&key={Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+    </p>
+</div>
+
