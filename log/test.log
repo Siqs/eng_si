@@ -1,2 +1,64 @@
   [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/welcome/index" for 127.0.0.1 at 2020-10-06 19:12:36 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mClinica Load (6.8ms)[0m  [1m[34mSELECT "clinicas".* FROM "clinicas"[0m
+  Rendered welcome/index.html.erb within layouts/application (Duration: 18.7ms | Allocations: 912)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/siqs/Documents/GitHub/eng_si/public/packs-test
+[Webpacker] Hash: 938ecd4dac68dd2bd2ec
+Version: webpack 4.44.2
+Time: 2177ms
+Built at: 10/06/2020 7:12:42 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-31c0a7fd2aa09b742314.js    124 KiB  application  [emitted] [immutable]  application
+js/application-31c0a7fd2aa09b742314.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  384 bytes               [emitted]              
+Entrypoint application = js/application-31c0a7fd2aa09b742314.js js/application-31c0a7fd2aa09b742314.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 6791ms (Views: 6770.0ms | ActiveRecord: 9.5ms | Allocations: 14793)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/welcome/index" for 127.0.0.1 at 2020-10-06 19:14:21 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mClinica Load (0.5ms)[0m  [1m[34mSELECT "clinicas".* FROM "clinicas"[0m
+  Rendered welcome/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 912)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 164ms (Views: 148.4ms | ActiveRecord: 1.9ms | Allocations: 11907)
+  [1m[35m (2.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/welcome/index" for 127.0.0.1 at 2020-10-06 19:25:43 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mClinica Load (0.7ms)[0m  [1m[34mSELECT "clinicas".* FROM "clinicas"[0m
+  Rendered welcome/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 912)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 136ms (Views: 120.8ms | ActiveRecord: 2.2ms | Allocations: 11973)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/welcome/index" for 127.0.0.1 at 2020-10-06 19:26:12 -0300
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mClinica Load (0.6ms)[0m  [1m[34mSELECT "clinicas".* FROM "clinicas"[0m
+  Rendered welcome/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 912)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 89ms (Views: 77.6ms | ActiveRecord: 2.3ms | Allocations: 11998)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m

@@ -1,5 +1,8 @@
 language: ruby
 
+services:
+  - postgresql
+
 rvm: 
   - 2.7.1 
 
@@ -8,6 +11,13 @@ script:
   - bundle exec rake db:migrate
   - bundle exec rspec spec
   - bundle exec cucumber
+
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - psql -c "create database IF NOT EXISTS development;"
+  - psql -c "create database IF NOT EXISTS test;" 
+  - psql -c "create database IF NOT EXISTS production;"
+
 
 branches:
   only:
