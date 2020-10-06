@@ -13,7 +13,7 @@ script:
   - bundle exec cucumber
 
 before_script:
-  - cp config/database.yml config/database.travis.yml
+  - cp config/database.travis.yml config/database.yml
   - psql -c "create database IF NOT EXISTS development;"
   - psql -c "create database IF NOT EXISTS test;" 
   - psql -c "create database IF NOT EXISTS production;"
