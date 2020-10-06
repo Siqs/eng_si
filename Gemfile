@@ -7,7 +7,7 @@ ruby '2.7.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 
 # Use postgresql as the database for Active Record
-# gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -35,10 +35,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
   gem 'jasmine'
   gem 'coveralls', require: false  
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.4'
-
-
 end
 
 group :development do
