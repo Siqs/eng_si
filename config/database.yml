@@ -1,23 +1,21 @@
-development:
+default: &default
   adapter: postgresql
-  database: engsi_database_development
-  pool: 5
+  pool: <&= ENV.fetch("Rails_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: postgres
-  password: c3po
 
-test:
-  adapter: postgresql
-  database: engsi_database_test
-  pool: 5
-  timeout: 5000
+development:
+  <<: *default
+  database: engsi_database_development
   username: postgres
-  password: c3po
+  password: 
+
+test: &test
+  <<: *default
+  database: engsi_database_test
 
 production:
-  adapter: postgresql
-  database: engsi_database_production
-  pool: 5
-  timeout: 5000
-  username: superuser
-  password:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+
+cucumber:
+  <<: *test

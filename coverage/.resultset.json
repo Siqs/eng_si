@@ -14,8 +14,8 @@
         null,
         null,
         null,
-        1,
-        1,
+        0,
+        0,
         null
       ],
       "/Users/siqs/Documents/GitHub/eng_si/spec/rails_helper.rb": [
@@ -51,16 +51,14 @@
         0,
         0,
         null,
-        1,
+        0,
         null,
-        1,
-        null,
-        null,
+        0,
         null,
         null,
-        1,
         null,
         null,
+        0,
         null,
         null,
         null,
@@ -76,10 +74,12 @@
         null,
         null,
         null,
-        1,
         null,
         null,
-        1,
+        0,
+        null,
+        null,
+        0,
         null,
         null,
         null
@@ -307,30 +307,19 @@
       "/Users/siqs/Documents/GitHub/eng_si/spec/models/clinica_spec.rb": [
         1,
         null,
-        1,
-        1,
-        null
-      ],
-      "/Users/siqs/Documents/GitHub/eng_si/app/models/clinica.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/siqs/Documents/GitHub/eng_si/app/models/application_record.rb": [
-        1,
-        1,
+        0,
+        0,
         null
       ],
       "/Users/siqs/Documents/GitHub/eng_si/spec/requests/welcome_request_spec.rb": [
         1,
         null,
-        1,
+        0,
         null,
-        1,
-        1,
-        1,
-        1,
+        0,
+        0,
+        0,
+        0,
         null,
         null,
         null,
@@ -339,22 +328,11 @@
       "/Users/siqs/Documents/GitHub/eng_si/spec/views/welcome/index.html.erb_spec.rb": [
         1,
         null,
-        1,
-        1,
-        null
-      ],
-      "/Users/siqs/Documents/GitHub/eng_si/app/controllers/application_controller.rb": [
-        1,
-        null
-      ],
-      "/Users/siqs/Documents/GitHub/eng_si/app/controllers/welcome_controller.rb": [
-        1,
-        1,
-        1,
-        null,
+        0,
+        0,
         null
       ]
     },
-    "timestamp": 1602023172
+    "timestamp": 1602024608
   }
 }
