@@ -18,7 +18,7 @@
         <br>
     <% end %>
     </table>
-    <p class="mapa"><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C51.501564,-0.141944&key={Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
+    <p class="mapa"><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C51.501564,-0.141944&key=#{Rails.application.credentials.google_maps_api_key}", alt: "Map" %>
     </p>
 </div>
 
