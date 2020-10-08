@@ -14,6 +14,6 @@ Acesse nosso mapa para encontrar clínicas mais próximas, filtre por preço, co
 - Gustavo Mitsunari Oyama
 - Ivo de Andrade de Deus
 - Lucas Barbosa de Figueiredo
-- Lucas Siqueira
+- Lucas Siqueira - 8082751
 - Marcelo de Oliveira Santos
 - Ygor Nanni de Carvalho
