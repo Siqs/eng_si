@@ -45,3 +45,4 @@ yarn-debug.log*
 
 *.yml
 .env
+config/database.yml
