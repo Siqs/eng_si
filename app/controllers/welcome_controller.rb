@@ -8,11 +8,12 @@ class WelcomeController < ApplicationController
 
   def create
     @clinica = Clinica.new(clinica_params)
+    
     if @clinica.save 
       clin = Clinica.last
-      coord = Geocoder.search(:address)
-      coord = coord.first.coordinates
-      clin.update(lat: coord[0],lon: coord[1])
+      coord = Geocoder.search(@clinica.address)
+      cordenadas = coord.first.coordinates
+      clin.update(lat: cordenadas[0],lon: cordenadas[1])
       redirect_to welcome_index_path
     else 
       render 'new'
@@ -20,7 +21,6 @@ class WelcomeController < ApplicationController
 
   end
   def show 
-    @clinicas = Clinicas.find([:id])
   end
 
   private 
