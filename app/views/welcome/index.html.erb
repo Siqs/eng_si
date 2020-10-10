@@ -2,7 +2,7 @@
 <div class="container">
 
     <div class="top"> 
-    <img src="public/saude-mental(1).png">
+
   
     <button>LOGIN</button>
     </div>
@@ -14,6 +14,8 @@
         <tr class="container">
             <td class="name"><%= c.name %></td>
             <td class="address"><%= c.address %></td>
+            <td class="latitude"><%= c.lat %></td>
+            <td class="longitude"><%= c.lon %></td>
         </tr>
         <br>
     <% end %>
@@ -21,20 +23,19 @@
 
     <%= link_to "Cadastrar nova clinica", new_welcome_url  %>  
 
-
-    <p class="mapa"><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C51.501564,-0.141944&key=#{ENV['MAPS_API_KEY']}", alt: "Map" %>
-    </p>
     <div id="map"></div>
-
-
     <script>
         // Initialize and add the map
         function initMap() {
         var sp = {lat:  -23.5505199, lng: -46.63330939999999};
+        var each = {lat: -23.4823919,lng:-46.5004498}
         var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 10, center: sp});
-        
+            document.getElementById('map'), {zoom: 10, center: sp});  
+        var marker = new google.maps.Marker({position: each, map: map});      
         }
+        
+
+
     </script>
     <script defer
         src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>&callback=initMap">
