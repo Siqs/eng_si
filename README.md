@@ -11,9 +11,9 @@ Acesse nosso mapa para encontrar clínicas mais próximas, filtre por preço, co
 
 ## Integrantes
 
-- Gustavo Mitsunari Oyama
-- Ivo de Andrade de Deus
+- Gustavo Mitsunari Oyama - 9845023
+- Ivo de Andrade de Deus - 8075238
 - Lucas Barbosa de Figueiredo
-- Lucas Siqueira
-- Marcelo de Oliveira Santos
-- Ygor Nanni de Carvalho
+- Lucas Siqueira - 8082751
+- Marcelo de Oliveira Santos - 9277663
+- Ygor Nanni de Carvalho - 9778690
