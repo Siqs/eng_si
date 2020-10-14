@@ -6,7 +6,8 @@ default: &default
 development:
   <<: *default
   database: engsi_database_development
-
+  username: postgres
+  password: 
 
 test: &test
   <<: *default
