@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 2020_10_08_221356) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "lat"
     t.float "lon"
+    
+        
+      create_table "upa", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.float "lat"
+    t.float "lon"
+    t.string "tel"
+    t.horini "string"
+    t.horfim "string"   
   end
 
 end
