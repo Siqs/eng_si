@@ -1,4 +1,5 @@
 
+
 <div class="container">
 
     <div class="top"> 
@@ -29,13 +30,23 @@
         function initMap() {
         var sp = {lat:  -23.5505199, lng: -46.63330939999999};
         var each = {lat: -23.4823919,lng:-46.5004498}
+        var dreach = {lat: -23.4888,lng:-46.5017}
+        var mutinga = {lat: -23.4867,lng:-46.7382}
+
+
         var map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 10, center: sp});  
-        var marker = new google.maps.Marker({position: each, map: map});      
+           document.getElementById('map'), {zoom: 10, center: each});  
+        <% @clinicas.each do |c| %>
+//           new google.maps.LatLng(-34.397, 150.644)
+           var lat = <%= c.lat %>;
+           var lon = <%= c.lon %>;
+           var marker = new google.maps.Marker({position: {lat:  <%= c.lat %>, lng:  <%= c.lon %>}, map: map});
+       <% end %>
+
+//         var marker = new google.maps.Marker({position: each, map: map});
+      
         }
         
-
-
     </script>
     <script defer
         src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>&callback=initMap">
