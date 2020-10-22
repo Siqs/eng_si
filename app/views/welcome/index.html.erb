@@ -2,9 +2,8 @@
 <div class="container">
 
     <div class="top"> 
-    <img src="public/saude-mental(1).png">
-    <%#= image_tag("public/saude-mental(1).png") %>   
-    <button>LOGIN</button>
+
+
     </div>
 
     <h1>Encontre ajuda perto de você!</h1>
@@ -18,7 +17,50 @@
         <br>
     <% end %>
     </table>
-    <p class="mapa"><%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C51.501564,-0.141944&key=#{ENV['MAPS_API_KEY']}", alt: "Map" %>
-    </p>
+
+    <div id="map"></div>
+
+     <script>        
+        function initMap() {
+
+        var sp = {lat:  -23.5505199, lng: -46.63330939999999};
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 10, center: sp});  
+        //incluir  coluna latitude e longitude
+        var lat = document.getElementsByClassName("latitude");
+        var lng = document.getElementsByClassName("longitude");
+
+        for (var i = 0; i<lat.length;i++){
+            var lati = lat.item(i).innerHTML
+            var long = lng.item(i).innerHTML
+            //cria coordenadas no formato google, possibilidade de adicionar mais infos como nome 
+            var latLng = new google.maps.LatLng(lati,long) 
+            //cria todos os marcadores do mapa baseados na lista de clinica
+            var marker = new google.maps.Marker({
+                map:map,
+                position: latLng
+            });
+        }
+        const infowindow = new google.maps.InfoWindow({
+            content: "Change the zoom level",
+            position: sp,
+        });
+        //  finfowindow.open(map);
+        map.addListener("zoom_changed", () => {
+            console.log(map.getZoom())
+            infowindow.setContent("Zoom: " + map.getZoom());
+        });
+
+        
+        } 
+    </script>
+
+    
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>&callback=initMap">
+    </script>
+
+
+
 </div>
 
