@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Clinica.create!([
-    { "name": "Clinica A", "address": "Rua Teste, 1"},
-    { "name": "Clinica B", "address": "Rua Teste, 2"}
+    { "name": "Clinica A", "address": "Rua Teste, 1", "latitude": "-23.539391", "longitude": "-46.566459"},
+    { "name": "Clinica B", "address": "Rua Teste, 2", "latitude": "-23.559649", "longitude": "-46.632670"}
 ])
