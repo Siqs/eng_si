@@ -12,5 +12,9 @@ Scenario: Inserindo dado nulo
     Given que exista um campo de preenchimento (endereco)
     When preencho o campo ""
     And clico no botão salvar endereco atual
-    Then uma mensagem de erro "Falha"
+    Then uma mensagem de erro "Localizacao Não Salva"
+
+Scenario: visualizando clinicas proximas
+    Given que o mapa está centralizado na minha localização atual
+    Then eu vejo clinicas ao meu redor
 

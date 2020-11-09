@@ -9,4 +9,12 @@ RSpec.describe "Welcomes", type: :request do
     end
   end
 
+  describe 'POST /' do
+    it "salva coordenadas no localStorage" do
+      post "/", :params => {format: :js, :endereco_atual => "Av. Paulista, 1578" }
+      
+      expect(response.body).to eq("localStorage.setItem('coordenadaAtual','[-23.5615171, -46.655961]');\n    document.location.reload();")
+
+    end
+  end
 end

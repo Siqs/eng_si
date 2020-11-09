@@ -1,4 +1,3 @@
-
 <div class="container">
 
     <div class="top"> 
@@ -8,14 +7,16 @@
 
     <h1>Encontre ajuda perto de você!</h1>
 
-    <%= form_with(url: "#geocode",method: "post") do |form| %>
+    <%= form_with(url: "/",action: "geocode",method: "post") do |form| %>
         <p>
             <%= form.label :endereco_atual %>
             <%= form.text_field :endereco_atual %>
         </p>
         <p>
         <%#= form.submit "limpar", :type => "reset" %>
-        <%= form.submit :Salvar , :name=>"salvar"%>
+        <%= form.submit :Salvar , :name=>"salvar"%> 
+
+        
         </p>
     <% end %>
 
@@ -31,11 +32,12 @@
     <% end %>
     </table>
 
-    <div id="map"></div>
+    <div id="map" data-test-env="<%= Rails.env.test? %>"></div>
+
     <script>
         // Initialize and add the map
         function initMap() {
-
+        
         var x = localStorage.getItem('coordenadaAtual')                         
         var coordenadaAtual= x ? JSON.parse(x) : null
 
@@ -45,24 +47,32 @@
         }   
         var each = {lat: -23.4823919,lng:-46.5004498}
 
-        var map = new google.maps.Map(
+        window.map = new google.maps.Map(
            document.getElementById('map'), {zoom: 18, center: latLng ? latLng :each});  
-        
+        var mapa = document.getElementById('map')
+        var opt = !(mapa.getAttribute('data-test-env')) 
+        //a propriedade optmized eh setada como false para ambiente de testes
+        //cria o marker como elemento unico na DOM        
+
         <% @clinicas.each do |c| %>
-//           new google.maps.LatLng(-34.397, 150.644)
            var lat = <%= c.latitude %>;
            var longitude = <%= c.longitude %>;
-           var marker = new google.maps.Marker({position: {lat:  <%= c.latitude %>, lng:  <%= c.longitude %>}, map: map});
+           var marker = new google.maps.Marker({
+               position: {lat:  <%= c.latitude %>, lng:  <%= c.longitude %>},
+               map: map,
+               optimized: !opt
+               });
+
        <% end %>
 
-//         var marker = new google.maps.Marker({position: each, map: map});
+
       
         }
         var coordAtual = localStorage.getItem('coordenadaAtual')
         if (coordAtual){
             document.getElementById("localizacaoAtual").innerHTML = "Localizacao Salva"
         } else{
-            document.getElementById("localizacaoAtual").innerHTML = "Falha"
+            document.getElementById("localizacaoAtual").innerHTML = "Localizacao Não Salva"
         }
                 
     </script>
@@ -77,4 +87,3 @@
 
 
 </div>
-
