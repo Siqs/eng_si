@@ -3,3 +3,4 @@ exclude_patterns:
   - "app/assets/"
   - "db/migrate/"
   - "doc/js/"
+  - "app/"
