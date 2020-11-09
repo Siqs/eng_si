@@ -6,7 +6,7 @@
 
     <h1>Encontre ajuda perto de você!</h1>
 
-    <%= form_with(url: "/",action: "geocode",method: "post") do |form| %>
+    <%= form_with(url: "/geo",action: "geocode",method: "post") do |form| %>
         <p>
             <%= form.label :endereco_atual %>
             <%= form.text_field :endereco_atual %>
