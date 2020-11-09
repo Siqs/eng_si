@@ -23,10 +23,7 @@ class WelcomeController < ApplicationController
     @clinicas = Clinica.find([:id])
   end
 
-  private 
-  def clinica_params
-    params.require(:clinica).permit(:name,:address)
-  end
+
 
   def geocode
     atual = params['endereco_atual']    
@@ -38,4 +35,10 @@ class WelcomeController < ApplicationController
     render :js => "localStorage.setItem('coordenadaAtual','#{cordenadas}');
     document.location.reload();"
   end
-end
+
+
+  private 
+  def clinica_params
+    params.require(:clinica).permit(:name,:address)
+  end
+ end
