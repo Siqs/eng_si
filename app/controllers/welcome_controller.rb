@@ -27,4 +27,15 @@ class WelcomeController < ApplicationController
   def clinica_params
     params.require(:clinica).permit(:name,:address)
   end
+
+  def geocode
+    atual = params['endereco_atual']    
+    coord = Geocoder.search(atual)
+    cordenadas = coord.first
+    unless cordenadas.nil? 
+      cordenadas = cordenadas.coordinates
+    end  
+    render :js => "localStorage.setItem('coordenadaAtual','#{cordenadas}');
+    document.location.reload();"
+  end
 end
