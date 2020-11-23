@@ -1,7 +1,6 @@
 <div class="container">
-
     <div class="top"> 
-    <%= link_to "Cadastrar nova clinica", new_welcome_url  %>  
+        <%= link_to "Oferece serviço psicológico ou psiquiátrico? Clique aqui para cadastrar sua clínica e aparecer para mais clientes!", new_welcome_url  %>
     </div>
 
     <h1>Encontre ajuda perto de você!</h1>
@@ -12,14 +11,10 @@
             <%= form.text_field :endereco_atual %>
         </p>
         <p>
-        <%#= form.submit "limpar", :type => "reset" %>
-        <%= form.submit :Salvar , :name=>"salvar"%> 
-
-        
+            <%#= form.submit "limpar", :type => "reset" %>
+            <%= form.submit :Encontrar , class: 'center'%> 
         </p>
     <% end %>
-
-    <p id="localizacaoAtual" name="localizacaoAtual"> </p>
 
     <table>
     <% @clinicas.each do |c| %>
@@ -34,55 +29,42 @@
     <div id="map" data-test-env="<%= Rails.env.test? %>"></div>
 
     <script>
-        // Initialize and add the map
         function initMap() {
-        
-        var x = localStorage.getItem('coordenadaAtual')                         
-        var coordenadaAtual= x ? JSON.parse(x) : null
+            var x = localStorage.getItem('coordenadaAtual')                         
+            var coordenadaAtual= x ? JSON.parse(x) : null
 
-        var latLng = null
-        if (coordenadaAtual){
-            latLng= new google.maps.LatLng(coordenadaAtual[0],coordenadaAtual[1])
-        }   
-        var each = {lat: -23.4823919,lng:-46.5004498}
+            var latLng = null
+            if (coordenadaAtual){
+                latLng= new google.maps.LatLng(coordenadaAtual[0],coordenadaAtual[1])
+            }   
+            var coordEACH = {lat:-23.4823919, lng:-46.5004498}
 
-        window.map = new google.maps.Map(
-           document.getElementById('map'), {zoom: 18, center: latLng ? latLng :each});  
-        var mapa = document.getElementById('map')
-        var opt = !(mapa.getAttribute('data-test-env')) 
-        //a propriedade optmized eh setada como false para ambiente de testes
-        //cria o marker como elemento unico na DOM        
+            window.map = new google.maps.Map(document.getElementById('map'), {zoom: 16, center: latLng ? latLng :coordEACH});  
+            var mapa = document.getElementById('map');
+            var opt = !(mapa.getAttribute('data-test-env')); 
 
-        <% @clinicas.each do |c| %>
-           var lat = <%= c.latitude %>;
-           var longitude = <%= c.longitude %>;
-           var marker = new google.maps.Marker({
-               position: {lat:  <%= c.latitude %>, lng:  <%= c.longitude %>},
-               map: map,
-               optimized: !opt
-               });
+            new google.maps.Marker({
+                position: coordEACH,
+                map,
+                animation: google.maps.Animation.DROP,
+                icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
+            });
+            //a propriedade optmized eh setada como false para ambiente de testes
+            //cria o marker como elemento unico na DOM        
 
-       <% end %>
-
-
-      
-        }
-        var coordAtual = localStorage.getItem('coordenadaAtual')
-        if (coordAtual){
-            document.getElementById("localizacaoAtual").innerHTML = "Localizacao Salva"
-        } else{
-            document.getElementById("localizacaoAtual").innerHTML = "Localizacao Não Salva"
-        }
-                
+            <% @clinicas.each do |c| %>
+            var lat = <%= c.latitude %>;
+            var longitude = <%= c.longitude %>;
+            var marker = new google.maps.Marker({
+                position: {lat:  <%= c.latitude %>, lng:  <%= c.longitude %>},
+                map: map,
+                optimized: !opt
+                });
+            <% end %>
+        }                
     </script>
 
-
-
-    
     <script defer
         src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>&callback=initMap">
     </script>
-
-
-
 </div>
