@@ -1,7 +1,6 @@
 <div class="container">
-
     <div class="top"> 
-    <%= link_to "Cadastrar nova clinica", new_welcome_url  %>  
+        <%= link_to "Oferece serviço psicológico ou psiquiátrico? Clique aqui para cadastrar sua clínica e aparecer para mais clientes!", new_welcome_url  %>
     </div>
 
     <h1>Encontre ajuda perto de você! </h1>
@@ -12,14 +11,10 @@
             <%= form.text_field :endereco_atual %>
         </p>
         <p>
-        <%#= form.submit "limpar", :type => "reset" %>
-        <%= form.submit :Salvar , :name=>"salvar"%> 
-
-        
+            <%#= form.submit "limpar", :type => "reset" %>
+            <%= form.submit :Encontrar, :name=>"salvar", class: 'salvar'%> 
         </p>
     <% end %>
-
-    <p id="localizacaoAtual" name="localizacaoAtual"> </p>
 
     <table>
     <% @clinicas.each do |c| %>
@@ -34,7 +29,6 @@
     <div id="map" data-test-env="<%= Rails.env.test? %>"></div>
 
     <script>
-        // Initialize and add the map
         function initMap() {
             var x = localStorage.getItem('coordenadaAtual')                         
             var coordenadaAtual= x ? JSON.parse(x) : null
@@ -131,9 +125,6 @@
         }                       
     </script>
 
-
-
-    
     <script defer
         src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>&callback=initMap">
     </script>
