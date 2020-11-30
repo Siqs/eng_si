@@ -3,7 +3,7 @@
         <%= link_to "Oferece serviço psicológico ou psiquiátrico? Clique aqui para cadastrar sua clínica e aparecer para mais clientes!", new_welcome_url  %>
     </div>
 
-    <h1>Encontre ajuda perto de você!</h1>
+    <h1>Encontre ajuda perto de você! </h1>
 
     <%= form_with(url: "/geo",method: "post") do |form| %>
         <p>
@@ -36,32 +36,93 @@
             var latLng = null
             if (coordenadaAtual){
                 latLng= new google.maps.LatLng(coordenadaAtual[0],coordenadaAtual[1])
-            }   
-            var coordEACH = {lat:-23.4823919, lng:-46.5004498}
+            }
 
-            window.map = new google.maps.Map(document.getElementById('map'), {zoom: 16, center: latLng ? latLng :coordEACH});  
-            var mapa = document.getElementById('map');
-            var opt = !(mapa.getAttribute('data-test-env')); 
+            var each = {lat: -23.4823919,lng:-46.5004498}
 
-            new google.maps.Marker({
-                position: coordEACH,
-                map,
-                animation: google.maps.Animation.DROP,
-                icon: { url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
-            });
+            window.map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 18, center: latLng ? latLng :each});  
+            var mapa = document.getElementById('map')
+            var opt = !(mapa.getAttribute('data-test-env')) 
             //a propriedade optmized eh setada como false para ambiente de testes
             //cria o marker como elemento unico na DOM        
 
             <% @clinicas.each do |c| %>
-            var lat = <%= c.latitude %>;
-            var longitude = <%= c.longitude %>;
-            var marker = new google.maps.Marker({
-                position: {lat:  <%= c.latitude %>, lng:  <%= c.longitude %>},
-                map: map,
-                optimized: !opt
+                var lat = <%= c.latitude %>;
+                var longitude = <%= c.longitude %>;
+                var marker = new google.maps.Marker({
+                    position: {lat:  <%= c.latitude %>, lng:  <%= c.longitude %>},
+                    map: map,
+                    optimized: !opt
                 });
             <% end %>
-        }                
+            
+            if (coordenadaAtual){
+                var origem = new google.maps.LatLng(coordenadaAtual[0],coordenadaAtual[1]);
+            }
+            var destinos = [];
+
+            <% @clinicas.each do |c| %>
+                var lat = <%= c.latitude %>;
+                var longitude = <%= c.longitude %>;
+                var destino = new google.maps.LatLng(lat, longitude);
+                destinos.push(destino);
+            <% end %>
+
+            if (coordenadaAtual){
+                var matrizDistancia = new google.maps.DistanceMatrixService();
+                var a = matrizDistancia.getDistanceMatrix ({
+                    origins: [origem],
+                    destinations: destinos,
+                    travelMode: 'DRIVING'
+                }, encontrarMaisProximo);
+            }
+        }
+
+        function encontrarMaisProximo(response, status) {
+            if (status == 'OK') {
+                var origins = response.originAddresses;
+                var destinations = response.destinationAddresses;
+
+                for (var i = 0; i < origins.length; i++) {
+                    var results = response.rows[i].elements;
+                    for (var j = 0; j < results.length; j++) {
+                        var element = results[j];
+                        var distance = element.distance.text;
+                        var duration = element.duration.text;
+                        var from = origins[i];
+                        var to = destinations[j];
+                    }
+                }
+                var distancia = results[0].distance.value;
+                var count = 0;
+
+                for (var i = 0; i < results.length; i++) {
+                  var dist = results[i].distance.value;
+                  if (dist < distancia) {
+                      distancia = dist;
+                      count = i;
+                  }
+                }
+
+                var resultado = document.createElement("div");
+                resultado.setAttribute("id", "clinicaProxima");
+
+                var texto = document.createTextNode("A clínica mais próxima do seu endereço é: " + response.destinationAddresses[count]);
+                resultado.appendChild(texto);
+
+                var texto2 = document.getElementById("#localizacaoAtual");                
+                document.body.insertBefore(resultado, texto2);
+            }
+        } 
+
+        var coordAtual = localStorage.getItem('coordenadaAtual')
+
+        if (coordAtual){
+            document.getElementById("localizacaoAtual").innerHTML = "Localizacao Salva"
+        } else{
+            document.getElementById("localizacaoAtual").innerHTML = "Localizacao Não Salva"
+        }                       
     </script>
 
     <script defer
