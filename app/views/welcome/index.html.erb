@@ -16,15 +16,27 @@
         </p>
     <% end %>
 
+    
+    <h3 style="padding-top: 14px;">Lista de Clínicas</h3>
     <table>
     <% @clinicas.each do |c| %>
         <tr class="container">
             <td class="name"><%= c.name %></td>
-            <td class="address"><%= c.address %></td>
+            <td class="address"><%= c.address %></td>       
         </tr>
         <br>
     <% end %>
     </table>
+    <h3 style="padding-top: 14px;">Filtrar clínicas por plano de saúde</h1>
+    <%= form_with(url: "/plano",method: "get",local: "true") do |form| %>
+        <p>
+            <%= form.label :plano_de_saude%>
+            <%= form.text_field :plano_de_saude %>
+        </p>
+        <p>
+            <%= form.submit :Procurar, :name=>"procurar", class: 'procurar'%> 
+        </p>
+    <% end %>
 
     <div id="map" data-test-env="<%= Rails.env.test? %>"></div>
 

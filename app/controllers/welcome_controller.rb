@@ -23,6 +23,8 @@ class WelcomeController < ApplicationController
     @clinicas = Clinica.find([:id])
   end
 
+
+
   def geocode
     atual = params['endereco_atual']    
     coord = Geocoder.search(atual)
