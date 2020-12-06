@@ -1,0 +1,43 @@
+<div id="plano">
+<p>Clinicas que aceitam o plano de saude especificado </p>
+<p>
+    <% @clinicas.each do |c| %>
+        <tr class="container">
+            <td class="name"><%= c.name %></td>
+            <td class="address"><%= c.address %></td>
+            <td class="plano"><%= c.plano %></td>            
+        </tr>
+        <br>
+    <% end %>
+</p>
+
+<div id="map" data-test-env="<%= Rails.env.test? %>"></div>
+</div>
+<script>
+    function initMap(){
+        var x = localStorage.getItem('coordenadaAtual')                         
+        var coordenadaAtual= x ? JSON.parse(x) : null
+        var each = {lat: -23.4823919,lng:-46.5004498}
+        var latLng = null
+        if (coordenadaAtual){
+            slatLng= new google.maps.LatLng(coordenadaAtual[0],coordenadaAtual[1])
+        }
+        window.map = new google.maps.Map(
+                    document.getElementById('map'), {zoom: 18, center: latLng ? latLng :each});  
+                var mapa = document.getElementById('map')
+                var opt = !(mapa.getAttribute('data-test-env')) 
+
+                <% @clinicas.each do |c| %>
+                var lat = <%= c.latitude %>;
+                var longitude = <%= c.longitude %>;
+                var marker = new google.maps.Marker({
+                    position: {lat:  <%= c.latitude %>, lng:  <%= c.longitude %>},
+                    map: map,
+                    optimized: !opt
+                });
+            <% end %>
+    }
+</script>
+<script defer
+        src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>&callback=initMap">
+</script>
